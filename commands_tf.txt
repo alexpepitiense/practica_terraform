@@ -1,0 +1,37 @@
+wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update && sudo apt install terraform
+terraform --version
+whereis terraform
+
+aws --version
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo apt update
+sudo apt install unzip
+unzip awscliv2.zip
+sudo ./aws/install
+aws --version
+
+aws configure
+aws sts get-caller-identity
+
+terraform init
+terraform plan
+terraform plan --out s3.plan
+terraform apply
+terraform apply --auto-approve=true
+terraform apply --replace=aws_instance.public_instance
+terraform destroy
+  
+terraform fmt 
+terraform validate
+terraform show
+terraform output
+terraform --version
+  
+sudo apt  install tree
+tree .terraform
+
+chmod 400 mykey.pem
+ssh -i mykey.pem ec2-user@44.197.232.157
