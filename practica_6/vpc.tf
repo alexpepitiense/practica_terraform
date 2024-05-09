@@ -1,5 +1,7 @@
 resource "aws_vpc" "vpc_virginia" {
   cidr_block = var.virginia_cidr
+  # Si uso workspaces
+  # cidr_block = lookup(var.virginia_cidr, terraform.workspace)
   tags = {
     "Name" = "vpc_virginia"
   }
