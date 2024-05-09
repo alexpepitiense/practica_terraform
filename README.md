@@ -57,17 +57,22 @@ Antes de comenzar con la instalación, necesitarás lo siguiente:
    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
    
 2. **Descomprimir el archivo**:
+
+   Una vez descargado el archivo, utiliza unzip para extraerlo:
    
    ```bash
    unzip awscliv2.zip
 
-3. **Instalar AWS CLI v2**:
+2. **Instalar AWS CLI v2**:
+   
    Con los archivos extraídos, ejecuta el script de instalación con permisos de administrador:
+   
    ```bash
    sudo ./aws/install
 
 4. **Verificar la instalación**:
    
    Para asegurarte de que AWS CLI v2 se ha instalado correctamente, puedes verificar su versión:
+   
    ```bash
    aws --version
