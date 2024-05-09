@@ -23,13 +23,40 @@ terraform apply
 terraform apply --auto-approve=true
 terraform apply --replace=aws_instance.public_instance
 terraform destroy
-  
-terraform fmt 
+
+terraform fmt
 terraform validate
 terraform show
 terraform output
 terraform --version
-  
+
+# esto hace que si hacemos un plan, terraform vaya a reconstruir este recurso
+terraform taint aws_instance.public_instance
+# para quitarlo. Aunque ahora en vez de taint, se suele usar replace
+terraform untaint aws_instance.public_instance
+
+#para ver mas logs durante un plan, hay mas opciones como info, debug
+env | grep TF_LOG
+export TF_LOG=TRACE
+# mandarlos a un fichero
+export TF_LOG_PATH=logs.txt
+# para quitarlas tengo que hacer 
+unset TF_LOG
+
+# Importar una instancia ya generada en la interfaz grafica
+# primero habria que crear el resource web pero vacío
+terraform import aws_instance.web i-12345678
+# Seleccionamos lo que nos sea util de aqui
+terraform state show aws_instance.web 
+
+terraform workspace new prod
+# Genera terraform.tfstate.d
+terraform workspace delete prod
+terraform workspace list
+terraform workspace select default
+terraform workspace show
+
+
 sudo apt  install tree
 tree .terraform
 
