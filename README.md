@@ -14,3 +14,19 @@ Antes de comenzar, asegúrate de tener permisos de administrador (sudo) en el si
 
    ```bash
    wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+
+2. **Agregar el repositorio de HashiCorp**
+   ```bash
+   echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+
+3. **Actualizar la lista de paquetes y instalar Terraform**
+   ```bash
+   sudo apt update && sudo apt install terraform
+
+4. **Verificar la instalación**
+   ```bash
+   terraform --version
+
+5. **Ubicación del binario de Terraform**
+   ```bash
+   whereis terraform
