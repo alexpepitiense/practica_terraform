@@ -111,3 +111,28 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
   ip_protocol       = "-1" # semantically equivalent to all ports
   description       = "Egress rule for all traffic"
 }
+
+module "mybucket" {
+  source      = "./modules/s3"
+  bucket_name = "nombreunico123456"
+}
+
+output "s3_arn" {
+  value = module.mybucket.s3_bucket_arn
+}
+
+# module "terraform_state_backend" {
+#   source = "cloudposse/tfstate-backend/aws"
+#   # Cloud Posse recommends pinning every module to a specific version
+#   # version     = "x.x.x"
+#   version                            = "0.38.1"
+#   namespace                          = "example"
+#   stage                              = "prod"
+#   name                               = "terraform"
+#   environment                        = "us-east-1"
+#   attributes                         = ["state"]
+#   s3_bucket_name                     = "argonz-us-east-1-prod-terraform-state"
+#   terraform_backend_config_file_path = "."
+#   terraform_backend_config_file_name = "backend.tf"
+#   force_destroy                      = false
+# }

@@ -56,6 +56,11 @@ terraform workspace list
 terraform workspace select default
 terraform workspace show
 
+# terraform state en aws
+# para bajarlo
+terraform state pull > terraform.tfstate
+# para dejar de trabajar con esto y volver al local, podemos borrar el backend.tf o comentarlo y luego usar
+terraform init -migrate-state
 
 sudo apt  install tree
 tree .terraform
